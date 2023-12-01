@@ -82,8 +82,7 @@
     "tronweb": "5.1.0",
     "tweetnacl": "1.0.3",
     "web3": "4.0.1",
-    "wif": "2.0.6",
-    "xrpl": "2.12.0"
+    "wif": "2.0.6"
   },
   "resolutions": {
     "@types/react": "17.0.21"

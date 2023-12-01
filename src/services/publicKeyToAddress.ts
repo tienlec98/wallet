@@ -12,7 +12,6 @@ import { toBech32 } from '@cosmjs/encoding'
 import { rawSecp256k1PubkeyToRawAddress } from '@cosmjs/amino'
 import { Network, payments } from 'bitcoinjs-lib'
 const Tron = require('tronweb')
-const { deriveAddress } = require('xrpl')
 
 const networkBitcoin = {
   messagePrefix: '\u0018Bitcoin Signed Message:\n',
@@ -87,7 +86,6 @@ export const publicKeyToAddress = (publicKey: Bufferkey, chain: string, standard
     return payments.p2wpkh({ pubkey: Buffer.from(publicKey), network: networkBitcoin }).address
   }
   if (chain === CHAIN_ID.doge) return payments.p2pkh({ pubkey: Buffer.from(publicKey), network: dogecoin as Network }).address
-  if (chain === CHAIN_ID.xrp) return deriveAddress(Buffer.from(publicKey).toString('hex'))
   if (chain === CHAIN_ID.bitcoinTestNet)
     return payments.p2wpkh({ pubkey: Buffer.from(publicKey), network: networkBitcoinTestNet as Network }).address
   return pubToAddress.encode(chain, publicKey)
